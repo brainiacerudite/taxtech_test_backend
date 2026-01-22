@@ -10,6 +10,8 @@ import { notFoundHandler } from "./middleware/notFoundHandler"
 import { limiter } from "./utils/rateLimiter"
 import { errorHandler } from "./middleware/errorHandler"
 
+import routes from "./routes"
+
 const app = express()
 
 // middlewares
@@ -29,10 +31,10 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
 // register routes
-app.get("/health", (_req, res) => {
-    res.status(200).json({ status: "OK", message: "Taxtech test API v1", timestamp: new Date().toDateString() })
+app.get('/', (_req, res) => {
+    res.send('Welcome to Taxtech Test API')
 })
-// app.use('api/shipment', shipmentRoutes)
+app.use('/api', routes)
 
 // error handlers
 app.use(notFoundHandler)
