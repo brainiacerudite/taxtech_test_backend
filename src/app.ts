@@ -8,6 +8,7 @@ import morgan from "morgan"
 import logger from "./utils/logger"
 import { notFoundHandler } from "./middleware/notFoundHandler"
 import { limiter } from "./utils/rateLimiter"
+import { errorHandler } from "./middleware/errorHandler"
 
 const app = express()
 
@@ -35,6 +36,6 @@ app.get("/health", (_req, res) => {
 
 // error handlers
 app.use(notFoundHandler)
-// app.use(errorHandler)
+app.use(errorHandler)
 
 export default app
