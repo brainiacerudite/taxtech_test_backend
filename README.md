@@ -74,7 +74,7 @@ npm test
 
 ## 📡 API Documentation
 
-**Base URL:** `http://localhost:5000/api`
+**Base URL:** `http://localhost:8000/api`
 
 | Method | Endpoint | Description | Validations |
 |--------|----------|-------------|-------------|
