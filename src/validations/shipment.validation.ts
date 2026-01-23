@@ -8,4 +8,21 @@ export const createShipmentSchema = z.object({
     estimatedDelivery: z.iso.datetime().optional(),
 })
 
-export type CreateShipmentInput = z.infer<typeof createShipmentSchema>;
+export const updateShipmentSchema = z.object({
+  origin: z.string().min(3).optional(),
+  destination: z.string().min(3).optional(),
+  status: z.enum(ShipmentStatus).optional(),
+  estimatedDelivery: z.iso.datetime().optional()
+});
+
+export const queryShipmentSchema = z.object({
+  page: z.coerce.number().min(1).default(1),
+  limit: z.coerce.number().min(1).max(100).default(10),
+  status: z.enum(ShipmentStatus).optional(),
+  sortBy: z.enum(['createdAt', 'estimatedDelivery']).default('createdAt'),
+  sortOrder: z.enum(['asc', 'desc']).default('desc')
+});
+
+export const shipmentIdParamSchema = z.object({
+    id: z.string().min(1, "Shipment ID is required")
+});

@@ -41,6 +41,6 @@ const ShipmentSchema = new Schema<ShipmentDoc>({
 })
 
 ShipmentSchema.index({ createdAt: -1 })
-ShipmentSchema.index({ origin: 1, destination: 1 })
+ShipmentSchema.index({ estimatedDelivery: 1 })
 
 export const Shipment = mongoose.model<ShipmentDoc>('Shipment', ShipmentSchema)
