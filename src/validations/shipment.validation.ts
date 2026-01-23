@@ -22,7 +22,3 @@ export const queryShipmentSchema = z.object({
   sortBy: z.enum(['createdAt', 'estimatedDelivery']).default('createdAt'),
   sortOrder: z.enum(['asc', 'desc']).default('desc')
 });
-
-export const shipmentIdParamSchema = z.object({
-    id: z.string().min(1, "Shipment ID is required")
-});
